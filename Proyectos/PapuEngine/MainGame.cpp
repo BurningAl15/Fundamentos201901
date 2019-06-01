@@ -18,6 +18,10 @@ void MainGame::init() {
 	_window.create("Engine", _witdh, _height, 0);
 	initShaders();
 	initLevel();
+
+	spriteIndex = 0;
+	spriteType = 0;
+	textureIDs.push_back(spriteType);
 }
 
 void MainGame::initLevel() {
@@ -45,6 +49,13 @@ void MainGame::initLevel() {
 		humans.back()->init(10.0f, pos);
 	}
 
+	for (int i = 0; i < 1; i++)
+	{
+		imageVector.push_back(new TA01());
+		glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+			randomY(randomEngine)*TILE_WIDTH);
+		imageVector.back()->init(pos);
+	}
 	//Here we init 
 }
 
@@ -84,12 +95,21 @@ void MainGame::draw() {
 	//Here we draw
 	levels[currentLevel]->draw();
 	player->draw(spritebatch);
+	
+	//for (size_t i = 0; i < humans.size(); i++)
+	//{
+	//	humans[i]->draw(spritebatch);
+	//}
+	//for (size_t i = 0; i < 50; i++)
+	//{
+	//	imageVector[i]->draw(spritebatch,0);
+	//}
 
-	for (size_t i = 0; i < humans.size(); i++)
+	for (size_t i = 0; i < imageVector.size(); i++)
 	{
-		humans[i]->draw(spritebatch);
+		imageVector[i]->draw(spritebatch, textureIDs[i]);
 	}
-
+	//imageVector[spriteIndex]->draw(spritebatch, spriteType);
 
 	spritebatch.end();
 	spritebatch.renderBatch();
@@ -129,8 +149,17 @@ void MainGame::procesInput() {
 
 void MainGame::handleInput()
 {
-	const float CAMERA_SPEED = 0.02;
-	const float SCALE_SPEED = 0.001f;
+	const float CAMERA_SPEED = 0.1;
+	const float SCALE_SPEED = 0.01f;
+
+	std::mt19937 randomEngine(time(nullptr));
+	std::uniform_int_distribution<int> randomX(
+		1, levels[currentLevel]->getWidth() - 2
+	);
+	std::uniform_int_distribution<int> randomY(
+		1, levels[currentLevel]->getHeight() - 2
+	);
+
 	/*if (inputManager.isKeyPressed(SDLK_w)) {
 		_camera.setPosition(_camera.getPosition() 
 					+glm::vec2(0.0, CAMERA_SPEED));
@@ -153,6 +182,59 @@ void MainGame::handleInput()
 	if (inputManager.isKeyPressed(SDLK_e)) {
 		_camera.setScale(_camera.getScale() - SCALE_SPEED);
 	}
+
+	if (inputManager.isKeyPressed(SDLK_a)) {
+		spriteType = 0;
+		if (spriteIndex < imageVector.size())
+		{
+			TA01* temp = new TA01();
+			imageVector.push_back(temp);
+			glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+				randomY(randomEngine)*TILE_WIDTH);
+			imageVector.back()->init(pos);
+		}
+		textureIDs.push_back(spriteType);
+		spriteIndex++;
+	}
+	if (inputManager.isKeyPressed(SDLK_b)) {
+		spriteType = 1;
+		if (spriteIndex < imageVector.size())
+		{
+			TA01* temp = new TA01();
+			imageVector.push_back(temp);
+			glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+				randomY(randomEngine)*TILE_WIDTH);
+			imageVector.back()->init(pos);
+		}
+		textureIDs.push_back(spriteType);
+		spriteIndex++;
+	}
+	if (inputManager.isKeyPressed(SDLK_c)) {
+		spriteType = 2;
+		if (spriteIndex < imageVector.size())
+		{
+			TA01* temp = new TA01();
+			imageVector.push_back(temp);
+			glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+				randomY(randomEngine)*TILE_WIDTH);
+			imageVector.back()->init(pos);
+		}
+		textureIDs.push_back(spriteType);
+		spriteIndex++;
+	}
+	if (inputManager.isKeyPressed(SDLK_d)) {
+		spriteType = 3;
+		if (spriteIndex < imageVector.size())
+		{
+			TA01* temp = new TA01();
+			imageVector.push_back(temp);
+			glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+				randomY(randomEngine)*TILE_WIDTH);
+			imageVector.back()->init(pos);
+		}
+		textureIDs.push_back(spriteType);
+		spriteIndex++;
+	}
 }
 
 void MainGame::update() {
@@ -161,7 +243,7 @@ void MainGame::update() {
 		procesInput();
 		draw();
 		_camera.update();
-		_time += 0.002f;
+		_time += 0.005f;
 		_camera.setPosition(player->getPosition());
 		updateElements();
 	}

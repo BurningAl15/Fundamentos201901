@@ -13,6 +13,8 @@
 #include "Zombie.h"
 #include "Human.h"
 
+#include "TA01.h"
+
 enum class GameState
 {
 	PLAY, EXIT
@@ -41,7 +43,12 @@ private:
 	void updateElements();
 	int currentLevel;
 	void initLevel();
-	
+
+	//TA01
+	int spriteIndex;
+	int spriteType;
+	vector<int> textureIDs;
+	vector<TA01*> imageVector;
 public:
 	MainGame();
 	~MainGame();
