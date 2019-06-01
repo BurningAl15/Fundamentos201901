@@ -25,9 +25,7 @@ void MainGame::initLevel() {
 	levels.push_back(new Level("Level/level1.txt"));
 	spritebatch.init();
 	player = new Player();
-	player->init(10.0f, 
-			levels[currentLevel]->getPlayerPosition(),
-		&inputManager);
+	player->init(10.0f,levels[currentLevel]->getPlayerPosition(),&inputManager);
 
 	std::mt19937 randomEngine(time(nullptr));
 	std::uniform_int_distribution<int> randomX(
@@ -37,13 +35,21 @@ void MainGame::initLevel() {
 		1, levels[currentLevel]->getHeight() - 2
 	);
 
-	for (int i = 0; i < 
-			levels[currentLevel]->getNumHumans(); i++)
+	for (int i = 0; i <levels[currentLevel]->getNumHumans(); i++)
 	{
 		humans.push_back(new Human());
 		glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
 			randomY(randomEngine)*TILE_WIDTH);
-		humans.back()->init(10.0f, pos);
+		humans.back()->init(7.5f, pos);
+	}
+
+	for (int i = 0; i < levels[currentLevel]->getNumZombies(); i++)
+	{
+		zombies.push_back(new Zombie());
+		//glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
+		//	randomY(randomEngine)*TILE_WIDTH);
+		//zombies.back()->init(20.0f, pos);
+		zombies.back()->init(20.0f, levels[currentLevel]->getZombiesPosition()[i]);
 	}
 
 	//Here we init 
@@ -91,6 +97,10 @@ void MainGame::draw() {
 		humans[i]->draw(spritebatch);
 	}
 
+	for (size_t i = 0; i < zombies.size(); i++)
+	{
+		zombies[i]->draw(spritebatch);
+	}
 
 	spritebatch.end();
 	spritebatch.renderBatch();
@@ -131,7 +141,7 @@ void MainGame::procesInput() {
 void MainGame::handleInput()
 {
 	const float CAMERA_SPEED = 0.02;
-	const float SCALE_SPEED = 0.001f;
+	const float SCALE_SPEED = 0.01f;
 	/*if (inputManager.isKeyPressed(SDLK_w)) {
 		_camera.setPosition(_camera.getPosition() 
 					+glm::vec2(0.0, CAMERA_SPEED));
@@ -162,7 +172,7 @@ void MainGame::update() {
 		procesInput();
 		draw();
 		_camera.update();
-		_time += 0.002f;
+		_time += 0.005f;
 		_camera.setPosition(player->getPosition());
 		updateElements();
 	}
@@ -177,11 +187,16 @@ void MainGame::updateElements() {
 		humans[i]->update(levels[currentLevel]->getLevelData(),
 			humans, zombies);
 	}
+	for (size_t i = 0; i < zombies.size(); i++)
+	{
+		zombies[i]->update(levels[currentLevel]->getLevelData(),
+			humans, zombies);
+	}
 }
 
 MainGame::MainGame(): 
-					  _witdh(800),
-					  _height(600),
+					  _witdh(1440),
+					  _height(720),
 					  _gameState(GameState::PLAY),
 					  _time(0)
 {

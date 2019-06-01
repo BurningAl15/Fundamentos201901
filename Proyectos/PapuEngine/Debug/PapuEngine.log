@@ -1,3 +1,6 @@
-﻿  Game.cpp
+﻿  MainGame.cpp
+c:\users\aldair\documents\gameenginefundamentals\v4\proyectos\papuengine\maingame.cpp(30): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+c:\users\aldair\documents\gameenginefundamentals\v4\proyectos\papuengine\maingame.cpp(127): warning C4244: 'argumento': conversión de 'Sint32' a 'float'; posible pérdida de datos
+c:\users\aldair\documents\gameenginefundamentals\v4\proyectos\papuengine\maingame.cpp(143): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
   PapuEngine.vcxproj -> C:\Users\Aldair\Documents\GameEngineFundamentals\V4\Proyectos\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Aldair\Documents\GameEngineFundamentals\V4\Proyectos\Debug\PapuEngine.pdb (Partial PDB)
