@@ -1,0 +1,26 @@
+mkdir Fundamentos
+cd Fundamentos
+git init
+8========D
+git remote add origin https://github.com/lvaldivia/Fundamentos201901.git
+
+git status
+git add archivo
+git add .
+
+Si da error
+
+git config --global user.email <mi correo>
+git config --global user.name <mi nombre>
+
+git commit -m "mensaje"
+
+git push origin master
+
+
+git clone https://github.com/lvaldivia/Fundamentos201901.git
+
+rm -rf *
+
+
+git clone https://github.com/lvaldivia/Fundamentos201901.git .
