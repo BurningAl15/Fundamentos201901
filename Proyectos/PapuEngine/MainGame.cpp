@@ -37,8 +37,7 @@ void MainGame::initLevel() {
 		1, levels[currentLevel]->getHeight() - 2
 	);
 
-	for (int i = 0; i < 
-			levels[currentLevel]->getNumHumans(); i++)
+	for (int i = 0; i < levels[currentLevel]->getNumHumans(); i++)
 	{
 		humans.push_back(new Human());
 		glm::vec2 pos(randomX(randomEngine)*TILE_WIDTH,
