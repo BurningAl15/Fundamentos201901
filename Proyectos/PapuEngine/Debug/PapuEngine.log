@@ -1,0 +1,7 @@
+﻿  PlayScreen.cpp
+c:\users\aldair\documents\gameenginefundamentals\v6\fundamentos201901\proyectos\papuengine\playscreen.cpp(66): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+c:\users\aldair\documents\gameenginefundamentals\v6\fundamentos201901\proyectos\papuengine\playscreen.cpp(89): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+c:\users\aldair\documents\gameenginefundamentals\v6\fundamentos201901\proyectos\papuengine\playscreen.cpp(96): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\aldair\documents\gameenginefundamentals\v6\fundamentos201901\proyectos\papuengine\playscreen.cpp(180): warning C4101: 'buffer': variable local sin referencia
+  PapuEngine.vcxproj -> C:\Users\Aldair\Documents\GameEngineFundamentals\V6\Fundamentos201901\Proyectos\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Aldair\Documents\GameEngineFundamentals\V6\Fundamentos201901\Proyectos\Debug\PapuEngine.pdb (Partial PDB)
