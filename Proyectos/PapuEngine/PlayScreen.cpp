@@ -71,11 +71,12 @@ void PlayScreen::onEntry() {
 		1, WINDOW_HEIGHT
 	);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 3; i++)
 	{
+		currentNumberOfEnemies++;
 		enemies.push_back(new SpaceEnemy(
-			50,50,
-			glm::vec2(randomX(randomEngine), randomY(randomEngine)),
+			50, 50,
+			glm::vec2(randomX(randomEngine), 0),
 			"Textures/piedra.png"));
 	}
 	
@@ -90,7 +91,20 @@ void PlayScreen::update() {
 	std::uniform_int_distribution<int> randomX(
 		1, WINDOW_WIDTH
 	);
+	std::uniform_int_distribution<int> randomY(
+		1, WINDOW_HEIGHT
+	);
 	
+	delay+=1;
+	if(delay >= maxDelay && currentNumberOfEnemies<maxNumberOfEnemies) {
+		currentNumberOfEnemies++;
+		enemies.push_back(new SpaceEnemy(
+			50, 50,
+			glm::vec2(randomX(randomEngine), 0),
+			"Textures/piedra.png"));
+		delay = 0;
+	}
+
 	for (size_t i = 0; i < enemies.size(); i++)
 	{
 		enemies[i]->update_Enemy(randomX(randomEngine));
@@ -162,6 +176,7 @@ void PlayScreen::draw() {
 	for (size_t i = 0; i < enemies.size(); i++)
 	{
 		enemies[i]->draw(_spriteBatch);
+		//}
 	}
 
 	//enemy->draw(_spriteBatch);

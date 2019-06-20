@@ -103,7 +103,7 @@ void MenuScreen::draw() {
 
 	button->draw(_spriteBatch);*/
 
-	sprintf(buffer, "ARREGLANDO EL BUG");
+	sprintf(buffer, "Lost in Space");
 	_spriteFont->draw(_spriteBatch, buffer,
 		glm::vec2(WINDOW_WIDTH/2- fontSize, WINDOW_HEIGHT-100), glm::vec2(0.5), 5.0f,
 		ColorRGBA(255, 255, 255, 255));

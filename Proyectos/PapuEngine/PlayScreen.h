@@ -11,7 +11,7 @@
 #include "SpaceEnemy.h"
 #include "SpriteFont.h"
 
-class PlayScreen: public IGameScreen
+class PlayScreen : public IGameScreen
 {
 private:
 	Background* background;
@@ -25,7 +25,14 @@ private:
 	SoundManager* soundManager;
 	vector<SpaceEnemy*> enemies;
 	SpriteFont* _spriteFont;
+
 	int life = 10;
+
+	int delay = 0;
+	int maxDelay = 100;
+
+	int currentNumberOfEnemies=0;
+	int maxNumberOfEnemies = 10;
 	//SpaceEnemy* enemy;
 	void drawHUD();
 public:
