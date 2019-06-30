@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <iostream>
 #include "WindowSize.h"
+
 using namespace std;
 
 MenuScreen::MenuScreen(Window* window):
@@ -15,7 +16,7 @@ void MenuScreen::initGUI() {
 	_spriteFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize);
 	_buttonFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize/3);
 
-	background = new Background("Textures/menu.png");
+	background = new Background("Textures/GameboyStyleMenu.png");
 	button = new Button("Textures/menu_button.png");
 }
 
@@ -48,8 +49,8 @@ void MenuScreen::onEntry() {
 	_camera2D.setPosition(glm::vec2(
 		_window->getScreenWidth() / 2.0f,
 		_window->getScreenHeight() / 2.0f));
+	
 	_spriteBatch.init();
-
 	initGUI();
 }
 
@@ -58,10 +59,7 @@ void MenuScreen::update() {
 	if (_game->_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
 		if (!button->getClicked() && button->click(_game->_inputManager.getMouseCoords()))
 		{
-			//soundManager->StopMusic();
 			button->SetClicked(true);
-			//soundManager = nullptr;
-			//delete soundManager;
 			_currentState = ScreenState::CHANGE_NEXT;
 		}
 	}
@@ -88,25 +86,19 @@ void MenuScreen::draw() {
 	glUniform1i(imageLocation, 0);
 	
 	_spriteBatch.begin();
-
 	background->draw(_spriteBatch);
 
 	button->draw(_spriteBatch);
-
 	_spriteBatch.end();
 	_spriteBatch.renderBatch();
 
 	char buffer[256];
 	_spriteBatch.begin();
 
-	/*background->draw(_spriteBatch);
-
-	button->draw(_spriteBatch);*/
-
 	sprintf(buffer, "Lost in Space");
 	_spriteFont->draw(_spriteBatch, buffer,
 		glm::vec2(WINDOW_WIDTH/2- fontSize, WINDOW_HEIGHT-100), glm::vec2(0.5), 5.0f,
-		ColorRGBA(255, 255, 255, 255));
+		ColorRGBA(255,255,255, 255));
 	
 	sprintf(buffer, "Start");
 	_buttonFont->draw(_spriteBatch, buffer,

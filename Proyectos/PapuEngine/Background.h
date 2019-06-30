@@ -3,7 +3,6 @@
 #include "GLTexture.h"
 #include <glm\glm.hpp>
 #include <string>
-
 using namespace std;
 
 class Background
@@ -23,6 +22,7 @@ public:
 		return color;
 	}
 
+	void SetTexture(string _texture);
 	~Background();
 };
 

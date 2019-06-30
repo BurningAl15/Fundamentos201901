@@ -16,14 +16,18 @@ class MenuScreen : public IGameScreen
 private:
 	Background* background = nullptr;
 	Button* button = nullptr;
-
 	Window* _window = nullptr;
 	bool btnGameClicked;
+
 	GLS_Program _program;
 	SpriteBatch _spriteBatch;
+	Camera2D _camera2D;
 	SpriteFont* _spriteFont;
 	SpriteFont* _buttonFont;
-	Camera2D _camera2D;
+
+	//int fontFrame = 1;
+	//int fontAnimationSpeed = 0;
+	//int color = 0;
 	//SoundManager* soundManager;
 	int fontSize = 150;
 public:

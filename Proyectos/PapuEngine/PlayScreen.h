@@ -10,6 +10,8 @@
 #include "SoundManager.h"
 #include "SpaceEnemy.h"
 #include "SpriteFont.h"
+#include "Bullet.h"
+#include "PowerUp.h"
 
 class PlayScreen : public IGameScreen
 {
@@ -23,16 +25,46 @@ private:
 	SpriteBatch _hudBach;
 	Camera2D _hudCamera;
 	SoundManager* soundManager;
-	vector<SpaceEnemy*> enemies;
 	SpriteFont* _spriteFont;
+	SpriteFont* _scoreFont;
 
+	vector<SpaceEnemy*> enemies;
+	vector<Bullet*> bullets;
+	vector<PowerUp*> powerUps;
+
+	vector<float> positions;
+
+	vector<string> bulletAnimationPaths;
+	vector<string> playerAnimationPaths;
+	vector<string> backgroundAnimationPaths;
+	vector<string> powerUpAnimationPaths;
+
+	int bulletFrame=0;
+	int bulletAnimationSpeed=0;
+
+	int playerFrame = 0;
+	int playerAnimationSpeed = 0;
+
+	int backgroundFrame = 0;
+	int backgroundAnimationSpeed = 0;
+
+	int powerUpFrame = 0;
+	int powerUpAnimationSpeed = 0;
+
+	int gameScore = 0;
+	int bulletCounter = 0;
 	int life = 10;
+	int enemyProductionDelay = 0;
+	int enemyProductionMaxDelay = 150;
 
-	int delay = 0;
-	int maxDelay = 100;
+	int powerUpProductionDelay = 0;
+	int powerUpProductionMaxDelay = 500;
 
-	int currentNumberOfEnemies=0;
-	int maxNumberOfEnemies = 10;
+	int enemyBehaviour = 0;
+	int enemyTypeHandler = 0;
+
+	//int currentNumberOfEnemies=0;
+	//int maxNumberOfEnemies = 10;
 	//SpaceEnemy* enemy;
 	void drawHUD();
 public:

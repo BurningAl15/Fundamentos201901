@@ -17,10 +17,14 @@ void App::setScreen(int index) {
 void App::addScreens() {
 	_menuScreen = std::make_unique<MenuScreen>(&_window);
 	_playScreen = std::make_unique<PlayScreen>(&_window);
+	_scoreScreen = std::make_unique<ScoreScreen>(&_window);
+	
 	_screenList->addScreen(_menuScreen.get());
 	_screenList->addScreen(_playScreen.get());
-	_screenList->setScreen(_menuScreen->getIndex());
+	_screenList->addScreen(_scoreScreen.get());
 
+	_screenList->setScreen(_menuScreen->getIndex());
+	//_screenList->setScreen(_scoreScreen->getIndex());
 }
 
 

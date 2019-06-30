@@ -24,7 +24,6 @@ void ScreenList::destroy() {
 	_screens.resize(0);
 }
 
-
 ScreenList::~ScreenList()
 {
 	destroy();

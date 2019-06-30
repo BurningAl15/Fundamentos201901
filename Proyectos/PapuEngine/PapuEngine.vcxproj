@@ -122,6 +122,7 @@
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="EndScreen.cpp" />
@@ -137,7 +138,9 @@
     <ClCompile Include="PapuEngine.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="PlayScreen.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="ScreenList.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SpaceEnemy.cpp" />
@@ -152,6 +155,7 @@
     <ClInclude Include="Agent.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="EndScreen.h" />
@@ -169,7 +173,9 @@
     <ClInclude Include="PapuEngine.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="PlayScreen.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="ScreenList.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SpaceEnemy.h" />
@@ -177,6 +183,7 @@
     <ClInclude Include="SpriteBacth.h" />
     <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="TextureCache.h" />
+    <ClInclude Include="TexturesNameManager.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />

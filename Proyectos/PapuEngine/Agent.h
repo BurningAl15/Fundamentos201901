@@ -28,8 +28,6 @@ protected:
 
 public:
 	Agent(float agent_width,float agent_height,glm::vec2 position, std::string texturePath);
-	//Agent(float agent_width, float agent_height, glm::vec2 position,float speed, std::string texturePath);
-	//Agent(float agent_width, float agent_height, std::string texturePath);
 	glm::vec2 getPosition()const { return _position; };
 
 	virtual void update() = 0;
@@ -40,8 +38,5 @@ public:
 	bool collideWithLevel(const std::vector<std::string>& levelData);
 	virtual ~Agent();
 	bool collideWithAgent(Agent* agent);
-	//void SetSpeed(float speed) {
-	//	_speed = speed;
-	//}
 };
 

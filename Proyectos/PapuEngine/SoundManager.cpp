@@ -2,7 +2,7 @@
 
 SoundManager::SoundManager(/*const char* _backgroundPath*/)
 {
-	bgm = Mix_LoadMUS("Sounds/Panda-Usted.mp3");
+	bgm = Mix_LoadMUS("Sounds/Purple Planet Music - Atmospheric - Eventide.mp3");
 	if (!Mix_PlayingMusic())
 	{
 		Mix_PlayMusic(bgm, -1);
@@ -28,7 +28,9 @@ SoundManager::SoundManager(const char* _backgroundPath, const char* _sfx)
 	soundEffect1 = Mix_LoadWAV(_sfx);
 }
 
-SoundManager::SoundManager(const char* _backgroundPath, const char* _sfx1, const char* _sfx2, const char* _sfx3)
+SoundManager::SoundManager(const char* _backgroundPath,
+	const char* _sfx1, const char* _sfx2, const char* _sfx3,
+	const char* _sfx4, const char* _sfx5)
 {
 	bgm = Mix_LoadMUS(_backgroundPath);
 	if (!Mix_PlayingMusic())
@@ -38,6 +40,8 @@ SoundManager::SoundManager(const char* _backgroundPath, const char* _sfx1, const
 	soundEffect1 = Mix_LoadWAV(_sfx1);
 	soundEffect2 = Mix_LoadWAV(_sfx2);
 	soundEffect3 = Mix_LoadWAV(_sfx3);
+	soundEffect4 = Mix_LoadWAV(_sfx4);
+	soundEffect5 = Mix_LoadWAV(_sfx5);
 }
 SoundManager::~SoundManager()
 {
@@ -74,6 +78,15 @@ void SoundManager::PlaySFX2() {
 void SoundManager::PlaySFX3() {
 	Mix_PlayChannel(-1, soundEffect3, 0);
 }
+
+void SoundManager::PlaySFX4() {
+	Mix_PlayChannel(-1, soundEffect4, 0);
+}
+
+void SoundManager::PlaySFX5() {
+	Mix_PlayChannel(-1, soundEffect5, 0);
+}
+
 void SoundManager::StopChannel(int sfx) {
 
 	Mix_HaltChannel(sfx);

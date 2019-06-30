@@ -10,8 +10,6 @@ SpaceEnemy::SpaceEnemy(
 	std::string texture)
 	:Agent(agent_width, agent_height, position, texture)
 {
-	_speed = 0.5;
-	//position= glm::vec2(randomX(randomEngine), randomY(randomEngine));
 }
 
 //SpaceEnemy::SpaceEnemy(
@@ -24,17 +22,34 @@ SpaceEnemy::SpaceEnemy(
 //	//position= glm::vec2(randomX(randomEngine), randomY(randomEngine));
 //}
 
-void SpaceEnemy::update() {}
+void SpaceEnemy::update() {
+	switch (behaviour)
+	{
+	default:
+	case 0:
+		_position.y -= _speed;
+		break;
+	case 1:
+		_position.y -= _speed;
+		_position.x += _speed;
+		break;
+	case 2:
+		_position.y -= _speed;
+		_position.x -= _speed;
+		break;
+	case 3:
+		//posX=0;
+		_position.x += _speed;
+		break;
+	case 4:
+		//posx=ScreenHeight
+		_position.x -= _speed;
+		break;
+	}
+}
+
 void SpaceEnemy::update_Enemy(float _newXPosition)
 {
-	if (_position.y >= 0)
-		_position.y -= 8.0f;
-	else
-	{
-		_position.x = _newXPosition;
-		_position.y = WINDOW_HEIGHT;
-	}
-
 }
 
 std::string SpaceEnemy::getTexture() {

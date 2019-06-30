@@ -68,6 +68,11 @@ public:
 		return _fontHeight;
 	}
 
+	void SetFontHeight(int fontHeight)
+	{
+		_fontHeight = fontHeight;
+	}
+
 	/// Measures the dimensions of the text
 	glm::vec2 measure(const char* s);
 

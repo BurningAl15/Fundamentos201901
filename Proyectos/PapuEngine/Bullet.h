@@ -1,19 +1,30 @@
 #pragma once
-#include <glm/glm.hpp>
-#include "SpriteBacth.h"
-class Bullet
+#include "Agent.h"
+
+class Bullet:public Agent
 {
 private:
-	float _speed;
-	glm::vec2 _direction;
-	glm::vec2 _position;
-	int _lifeTime;
+	float movementSpeed;
 public:
-	Bullet(glm::vec2 po, glm::vec2 dir, float speed, int lifeTime);
+	Bullet(float agent_width,
+		float agent_height,
+		glm::vec2 position,
+		std::string texture);
+
+	void update();
+	void update_Enemy(float _newXPosition);
+
+	void setPosition(glm::vec2 position) {
+		this->_position = position;
+	}
+	void changeTexture(std::string texturePath) {
+		this->_texturePath = texturePath;
+	}
+	std::string getTexture();
+
+	void SetSpeed(float _speed) {
+		movementSpeed = _speed;
+	}
 	~Bullet();
-	//void init(glm::vec2 po,glm::vec2 dir,float speed, int lifeTime);
-	void draw(SpriteBacth& spriteBatch);
-	bool update();
 
 };
-

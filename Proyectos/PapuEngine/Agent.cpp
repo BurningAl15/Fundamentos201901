@@ -4,7 +4,7 @@
 
 Agent::Agent(float agent_width, float agent_height, glm::vec2 position, std::string texture):
 	_agent_width(agent_width), _agent_height(agent_height), 
-	_agent_radius(agent_width),
+	_agent_radius(agent_width/1.1f),
 	_position(position),
 	_texturePath(texture)
 {
@@ -24,7 +24,6 @@ void Agent::draw(SpriteBatch& spritebatch) {
 	color.set(255, 255, 255, 255);
 	glm::vec4 destRect(_position.x, _position.y, _agent_width, _agent_height);
 	spritebatch.draw(destRect, uvRect, _texture_id, 0.0f, color);
-
 }
 
 bool Agent::collideWithLevel(const std::vector<std::string>& levelData) {
@@ -43,6 +42,7 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData) {
 
 	return true;
 }
+
 
 bool Agent::collideWithAgent(Agent* agent) {
 

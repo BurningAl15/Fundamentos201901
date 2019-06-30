@@ -9,6 +9,9 @@ class SpaceEnemy:public Agent
 private:
 	//InputManager* inputManager;
 	//glm::vec2 position;
+	//int id;
+	bool isAlive;
+	int behaviour=0;
 public:
 	SpaceEnemy(float agent_width,
 		float agent_height,
@@ -27,6 +30,29 @@ public:
 	void SetSpeed(float speed)
 	{
 		_speed = speed;
+	}
+	void SetYPos(float _yPos)
+	{
+		_position.y = _yPos;
+	}
+	void SetBehaviour(int _behaviour)
+	{
+		behaviour = _behaviour;
+	}
+
+	//int GetID() {
+	//	return id;
+	//}
+	//void SetID(int _id) {
+	//	id = _id;
+	//}
+
+	bool GetIsAlive() {
+		return isAlive;
+	}
+
+	void SetIsAlive(bool _isAlive) {
+		isAlive = _isAlive;
 	}
 	~SpaceEnemy();
 };

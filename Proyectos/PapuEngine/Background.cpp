@@ -20,6 +20,13 @@ void Background::setColor(ColorRGBA _color) {
 	color = _color;
 }
 
+void Background::SetTexture(string _texture)
+{
+	texture = _texture;
+	textureID
+		= ResourceManager::getTexture(_texture).id;
+	color.set(255, 255, 255, 255);
+}
 
 Background::~Background()
 {

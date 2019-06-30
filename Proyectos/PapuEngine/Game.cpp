@@ -37,7 +37,7 @@ void Game::draw() {
 	}
 }
 bool Game::initSystems() {
-	_window.create("Plataformer", WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+	_window.create("Trabajo Final - Aldhair Vera", WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 	return true;
 }
 
@@ -77,7 +77,6 @@ void Game::run() {
 		_window.swapBuffer();
 		_fps = fpsLimiter.end();
 		//cout << _fps << endl;
-		
 	}
 }
 
@@ -99,12 +98,23 @@ void Game::update() {
 				break;
 			case ScreenState::CHANGE_NEXT:
 				_currentScreen->onExit();
+
+				//if (_currentScreen->getIndex() == 2) {
+				//	_screenList->destroy();
+				//	addScreens();
+				//	_currentScreen = _screenList->getCurrent();
+				//}
+				//else {
+				//	_currentScreen = _screenList->moveNext();
+				//}
+
 				_currentScreen = _screenList->getCurrent();
 				index = _currentScreen->getIndex();
 				_screenList->destroy();
 				addScreens();
 				setScreen(index);
 				_currentScreen = _screenList->moveNext();
+
 				if (_currentScreen) {
 					_currentScreen->setRunning();
 					_currentScreen->onEntry();
@@ -129,7 +139,6 @@ void Game::update() {
 			default:
 				break;
 		}
-		
 	}
 }
 

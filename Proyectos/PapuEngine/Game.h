@@ -8,7 +8,6 @@ class IGameScreen;
 
 class Game
 {
-
 public:
 	Game();
 	virtual ~Game();
@@ -24,6 +23,7 @@ public:
 	const float getFps()const {
 		return _fps;
 	}
+	int _maxScore;
 
 protected:
 	bool init();

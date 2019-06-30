@@ -29,6 +29,8 @@ public:
 
 	Button(string _texture);
 
+	Button(string _texture,glm::vec2 _position,float _width,float _height);
+
 	void draw(SpriteBatch& spriteBatch);
 	void setColor(ColorRGBA _color);
 

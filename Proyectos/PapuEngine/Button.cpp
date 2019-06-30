@@ -12,6 +12,14 @@ Button::Button(string _texture) :texture(_texture)
 	color.set(255, 255, 255, 255);
 }
 
+Button::Button(string _texture, glm::vec2 _position, float _width, float _height) 
+	:texture(_texture),position(_position),width(_width),height(_height)
+{
+	textureID
+		= ResourceManager::getTexture(_texture).id;
+	color.set(255, 255, 255, 255);
+}
+
 void Button::draw(SpriteBatch& spriteBatch) {
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	glm::vec4 desctRect(position.x, position.y, width, height);
