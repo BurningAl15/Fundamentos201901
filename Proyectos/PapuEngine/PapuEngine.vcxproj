@@ -185,6 +185,7 @@
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="TexturesNameManager.h" />
     <ClInclude Include="Timing.h" />
+    <ClInclude Include="Type.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowSize.h" />

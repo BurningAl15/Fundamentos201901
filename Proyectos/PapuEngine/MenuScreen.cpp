@@ -14,10 +14,13 @@ MenuScreen::MenuScreen(Window* window):
 
 void MenuScreen::initGUI() {
 	_spriteFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize);
-	_buttonFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize/3);
+	_nameFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize);
+	//_buttonFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize/3);
 
-	background = new Background("Textures/GameboyStyleMenu.png");
-	button = new Button("Textures/menu_button.png");
+	background = new Background("Textures/Final/menu.png");
+	//button = new Button("Textures/menu_button.png");
+	button = new Button("Textures/menu_button.png",glm::vec2(0,0),WINDOW_WIDTH, WINDOW_HEIGHT);
+	button->setColor(ColorRGBA(0, 0, 0, 0));
 }
 
 void MenuScreen::initSystem() {
@@ -33,8 +36,8 @@ void MenuScreen::destroy() {
 	delete background;
 	delete button;
 	delete _spriteFont;
-	delete _buttonFont;
-
+	delete _nameFont;
+	//delete _buttonFont;
 	//delete soundManager;
 }
 
@@ -57,7 +60,8 @@ void MenuScreen::onEntry() {
 void MenuScreen::update() {
 	_camera2D.update();
 	if (_game->_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
-		if (!button->getClicked() && button->click(_game->_inputManager.getMouseCoords()))
+		if (!button->getClicked() 
+			&& button->click(_game->_inputManager.getMouseCoords()))
 		{
 			button->SetClicked(true);
 			_currentState = ScreenState::CHANGE_NEXT;
@@ -95,15 +99,21 @@ void MenuScreen::draw() {
 	char buffer[256];
 	_spriteBatch.begin();
 
-	sprintf(buffer, "Lost in Space");
+	sprintf(buffer, "Bica 4 life G_G");
 	_spriteFont->draw(_spriteBatch, buffer,
 		glm::vec2(WINDOW_WIDTH/2- fontSize, WINDOW_HEIGHT-100), glm::vec2(0.5), 5.0f,
 		ColorRGBA(255,255,255, 255));
 	
-	sprintf(buffer, "Start");
-	_buttonFont->draw(_spriteBatch, buffer,
-		glm::vec2(270, 110), glm::vec2(0.5), 6.0f,
-		ColorRGBA(0, 0, 0, 255));
+	sprintf(buffer, "Aldhair Vera");
+	_nameFont->draw(_spriteBatch, buffer,
+		glm::vec2(WINDOW_WIDTH / 2 - fontSize, WINDOW_HEIGHT - 200), glm::vec2(0.5), 5.0f,
+		ColorRGBA(255, 255, 255, 255));
+
+	//sprintf(buffer, "Start");
+	//_buttonFont->draw(_spriteBatch, buffer,
+	//	glm::vec2(270, 110), glm::vec2(0.5), 6.0f,
+	//	ColorRGBA(0, 0, 0, 255));
+
 	_spriteBatch.end();
 	_spriteBatch.renderBatch();
 

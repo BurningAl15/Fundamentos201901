@@ -39,7 +39,6 @@ public:
 	void setParent(Game* game) {
 		_game = game;
 	}
-	
 };
 
 

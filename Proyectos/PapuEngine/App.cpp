@@ -23,7 +23,9 @@ void App::addScreens() {
 	_screenList->addScreen(_playScreen.get());
 	_screenList->addScreen(_scoreScreen.get());
 
-	_screenList->setScreen(_menuScreen->getIndex());
+	//_screenList->setScreen(_menuScreen->getIndex());
+	_screenList->setScreen(0);
+
 	//_screenList->setScreen(_scoreScreen->getIndex());
 }
 

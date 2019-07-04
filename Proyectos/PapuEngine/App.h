@@ -18,6 +18,5 @@ private:
 	std::unique_ptr<MenuScreen> _menuScreen;
 	std::unique_ptr<PlayScreen> _playScreen;
 	std::unique_ptr<ScoreScreen> _scoreScreen;
-
 };
 

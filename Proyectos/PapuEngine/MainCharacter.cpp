@@ -9,7 +9,7 @@ MainCharacter::MainCharacter(float agent_width,
 	std::string texture)
 	:Agent(agent_width,agent_height,position,texture)
 {
-	movementSpeed = 4.0f;
+	movementSpeed = 5.0f;
 }
 
 MainCharacter::MainCharacter(float agent_width,
@@ -38,20 +38,6 @@ void MainCharacter::update()
 			_position.y -= movementSpeed;
 		else
 			_position.y = WINDOW_HEIGHT;
-	}
-	if (inputManager->isKeyDown(SDLK_a) || inputManager->isKeyDown(SDLK_LEFT))
-	{
-		if (_position.x >= 0)
-			_position.x -= movementSpeed;
-		else
-			_position.x = WINDOW_WIDTH;
-	}
-	if (inputManager->isKeyDown(SDLK_d) || inputManager->isKeyDown(SDLK_RIGHT))
-	{
-		if (_position.x <= WINDOW_WIDTH)
-			_position.x += movementSpeed;
-		else
-			_position.x = 0;
 	}
 }
 void MainCharacter::update_Enemy(float _newXPosition)

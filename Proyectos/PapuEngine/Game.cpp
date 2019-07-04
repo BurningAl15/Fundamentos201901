@@ -37,7 +37,7 @@ void Game::draw() {
 	}
 }
 bool Game::initSystems() {
-	_window.create("Trabajo Final - Aldhair Vera", WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+	_window.create("Examen Final - Aldhair Vera", WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 	return true;
 }
 

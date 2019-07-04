@@ -5,7 +5,6 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-//#inclde 
 using namespace std;
 
 ScoreScreen::ScoreScreen(Window* window) :_window(window),
@@ -61,9 +60,9 @@ void ScoreScreen::onEntry() {
 	_spriteFont = new SpriteFont("Fonts/SNES Italic.ttf", 150);
 	_buttonFont = new SpriteFont("Fonts/SNES Italic.ttf", fontSize / 3);
 	buttonPosition = glm::vec2(WINDOW_WIDTH - 140, WINDOW_HEIGHT - 50);
-	background = new Background("Textures/GameboyStyleMenu.png");
-	button = new Button("Textures/menu_button.png", buttonPosition, 190, 50);
-
+	background = new Background("Textures/Final/menu.png");
+	button = new Button("Textures/menu_button.png",glm::vec2(0,0), WINDOW_WIDTH, WINDOW_HEIGHT);
+	button->setColor(ColorRGBA(0, 0, 0, 0));
 	//initGUI();
 }
 
@@ -71,10 +70,11 @@ void ScoreScreen::update() {
 	_hudCamera.update();
 	_camera2D.update();
 	if (_game->_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
-		if (!button->getClicked() && button->click(_game->_inputManager.getMouseCoords()))
+		if (!button->getClicked() 
+			&& button->click(_game->_inputManager.getMouseCoords()))
 		{
 			button->SetClicked(true);
-			_currentState = ScreenState::CHANGE_NEXT;
+			_currentState = ScreenState::CHANGE_PREVIOUS;
 		}
 	}
 	checkInput();
@@ -122,28 +122,17 @@ void  ScoreScreen::drawHUD() {
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	char buffer[256];
-	char buffer2[256];
 
 	_hudBatch.begin();
 
-	sprintf_s(buffer, "PUNTAJE TOTAL: %d", _game->_maxScore );
+	sprintf_s(buffer, "YA ME FUI LA BIKA G_G");
 	_spriteFont->draw(_hudBatch, buffer,
-		glm::vec2(WINDOW_WIDTH / 2 - fontSize, WINDOW_HEIGHT - 100),
+		glm::vec2(WINDOW_WIDTH / 2 - fontSize, WINDOW_HEIGHT/2),
 		glm::vec2(0.5), 0.0f, ColorRGBA(255, 255, 255, 255));
-
-	sprintf(buffer2, "GO TO MENU");
-	_buttonFont->draw(_hudBatch, buffer2,
-		glm::vec2(WINDOW_WIDTH - 110, WINDOW_HEIGHT - 40), 
-		glm::vec2(0.5), 5.0f,
-		ColorRGBA(0, 0, 0, 255));
-
 
 	_hudBatch.end();
 	_hudBatch.renderBatch();
-
 }
-
-
 
 void ScoreScreen::build() {}
 

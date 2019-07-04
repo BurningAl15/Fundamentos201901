@@ -23,29 +23,29 @@ SpaceEnemy::SpaceEnemy(
 //}
 
 void SpaceEnemy::update() {
-	switch (behaviour)
+	/*switch (behaviour)
 	{
 	default:
 	case 0:
 		_position.y -= _speed;
 		break;
 	case 1:
-		_position.y -= _speed;
-		_position.x += _speed;
-		break;
-	case 2:
-		_position.y -= _speed;
+		_position.y -= _speed;*/
 		_position.x -= _speed;
-		break;
-	case 3:
-		//posX=0;
-		_position.x += _speed;
-		break;
-	case 4:
-		//posx=ScreenHeight
-		_position.x -= _speed;
-		break;
-	}
+	//	break;
+	//case 2:
+	//	_position.y -= _speed;
+	//	_position.x -= _speed;
+	//	break;
+	//case 3:
+	//	//posX=0;
+	//	_position.x += _speed;
+	//	break;
+	//case 4:
+	//	//posx=ScreenHeight
+	//	_position.x -= _speed;
+	//	break;
+	//}
 }
 
 void SpaceEnemy::update_Enemy(float _newXPosition)

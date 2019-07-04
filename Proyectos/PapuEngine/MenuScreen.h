@@ -23,12 +23,9 @@ private:
 	SpriteBatch _spriteBatch;
 	Camera2D _camera2D;
 	SpriteFont* _spriteFont;
+	SpriteFont* _nameFont;
 	SpriteFont* _buttonFont;
 
-	//int fontFrame = 1;
-	//int fontAnimationSpeed = 0;
-	//int color = 0;
-	//SoundManager* soundManager;
 	int fontSize = 150;
 public:
 	MenuScreen(Window* window);

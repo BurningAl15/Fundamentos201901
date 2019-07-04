@@ -1,17 +1,14 @@
 #pragma once
 #include "Agent.h"
 #include "InputManager.h"
-
+#include "Type.h"
 using namespace std;
 
 class SpaceEnemy:public Agent
 {
 private:
-	//InputManager* inputManager;
-	//glm::vec2 position;
-	//int id;
-	bool isAlive;
 	int behaviour=0;
+	enum AgentType type;
 public:
 	SpaceEnemy(float agent_width,
 		float agent_height,
@@ -40,20 +37,31 @@ public:
 		behaviour = _behaviour;
 	}
 
-	//int GetID() {
-	//	return id;
-	//}
-	//void SetID(int _id) {
-	//	id = _id;
-	//}
-
-	bool GetIsAlive() {
-		return isAlive;
+	enum AgentType GetType()
+	{
+		return type;
 	}
 
-	void SetIsAlive(bool _isAlive) {
-		isAlive = _isAlive;
+	void SetType(int _type)
+	{
+		switch (_type)
+		{
+		default:
+		case 0:
+			type = blue;
+			break;
+		case 1:
+			type = yellow;
+			break;
+		case 2:
+			type = green;
+			break;
+		case 3:
+			type = red;
+			break;
+		}
 	}
+
 	~SpaceEnemy();
 };
 

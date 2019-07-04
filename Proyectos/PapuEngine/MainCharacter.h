@@ -2,6 +2,7 @@
 #include "Agent.h"
 #include "InputManager.h"
 #include <SDL\SDL.h>
+#include "Type.h"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ class MainCharacter:public Agent
 private:
 	InputManager* inputManager;
 	float movementSpeed;
+	enum AgentType type;
 public:
 	MainCharacter(float agent_width,
 		float agent_height,
@@ -37,6 +39,30 @@ public:
 		movementSpeed = _speed;
 	}
 
+	enum AgentType GetType()
+	{
+		return type;
+	}
+
+	void SetType(int _type)
+	{
+		switch (_type)
+		{
+			default:
+			case 0:
+				type =blue;
+				break;
+			case 1:
+				type = yellow;
+				break;
+			case 2:
+				type = green;
+				break;
+			case 3:
+				type = red;
+				break;
+		}
+	}
 	std::string getTexture();
 
 	~MainCharacter();
